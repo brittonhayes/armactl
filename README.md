@@ -41,7 +41,6 @@ To see all available commands, run `armactl mod --help`.
 
 List all mods in a directory, a preset HTML file, or check that all mods in a directory match a preset HTML file.
 
-```bash
 
 ```bash
 # List all mods in a directory
