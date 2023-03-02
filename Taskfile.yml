@@ -1,0 +1,83 @@
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      - task -l
+
+  mod:
+    desc: download and tidy go modules
+    cmds:
+      - go mod download
+      - go mod tidy
+
+  clean:
+    desc: remove executables, temporary, and cached files
+    ignore_error: true
+    cmds:
+      - rm bin/armactl
+      - go clean -cache
+
+  lint:
+    desc: runs golint
+    cmds:
+      - golangci-lint run ./...
+
+  test:
+    desc: run all tests
+    cmds:
+      - go test ./...
+
+  test:v:
+    desc: run all tests verbose
+    cmds:
+      - go test -v ./...
+
+  test:cov:
+    desc: run all tests and generate coverage
+    cmds:
+      - go test -covermode=set -coverprofile=coverage.out ./...
+    sources:
+      - ./**/*.go
+    generates:
+      - coverage.out
+    method: checksum
+
+  build:
+    desc: run go build
+    cmds:
+      - go build -v -o bin/armactl cmd/armactl/main.go
+    sources:
+      - ./**/*.go
+    generates:
+      - bin/armactl
+    method: checksum
+
+  install:
+    desc: install executable
+    cmds:
+      - go install github.com/brittonhayes/armactl/cmd/armactl@latest
+
+  run:
+    desc: run the executable
+    cmds:
+      - task: build
+      - bin/armactl
+
+  docs:gen:
+    desc: generate documentation via gomarkdocwn
+    cmds:
+      - go generate ./...
+
+  docs:serve:
+    desc: serve godoc server locally
+    silent: true
+    cmds:
+      - echo "Documentation is available at http://localhost:6060/pkg/github.com/brittonhayes/armactl/"
+      - godoc -http=:6060
+
+  dev-setup:
+    desc: set things up for local development
+    cmds:
+      - task: mod
+      - task: build
