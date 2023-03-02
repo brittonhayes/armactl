@@ -5,21 +5,21 @@
 class Armactl < Formula
   desc "CLI for managing ARMA3 dedicated servers."
   homepage "https://github.com/brittonhayes/armactl"
-  version "0.0.4"
+  version "0.1.3"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/brittonhayes/armactl/releases/download/v0.0.4/armactl_0.0.4_darwin_amd64.tar.gz"
-      sha256 "d751eca1b4cb0f4b016a21987cb858c71a240f174c3fdac2e055eec861403040"
+      url "https://github.com/brittonhayes/armactl/releases/download/v0.1.3/armactl_0.1.3_darwin_amd64.tar.gz"
+      sha256 "0b0e5d4ef839ca3f5742e791f99deae84c4d67abac1dd748e1f4532a41850e0a"
 
       def install
         bin.install "armactl"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/brittonhayes/armactl/releases/download/v0.0.4/armactl_0.0.4_darwin_arm64.tar.gz"
-      sha256 "d1802b0f7bb1c2c3c5b20c81c6cd5cb4e441f8b53e94207f6f54f90d990702d8"
+      url "https://github.com/brittonhayes/armactl/releases/download/v0.1.3/armactl_0.1.3_darwin_arm64.tar.gz"
+      sha256 "1eddc7914802ad097d577efbc2f0c5bfbe12917b7219fa819df66b4887f35e26"
 
       def install
         bin.install "armactl"
@@ -29,16 +29,16 @@ class Armactl < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/brittonhayes/armactl/releases/download/v0.0.4/armactl_0.0.4_linux_arm64.tar.gz"
-      sha256 "edd087c65e45913c6ab80c5216b0ea68dfaf06214a5741cce0c829ad7e30523a"
+      url "https://github.com/brittonhayes/armactl/releases/download/v0.1.3/armactl_0.1.3_linux_arm64.tar.gz"
+      sha256 "5997ac764002d681e7699461cdff7cff2a672959526e3cffdfa33bc25c201450"
 
       def install
         bin.install "armactl"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/brittonhayes/armactl/releases/download/v0.0.4/armactl_0.0.4_linux_amd64.tar.gz"
-      sha256 "fb0935e7ca6c708b8f44382e10b6691f2d9b719b8ff7da8cb7739fd28ba81528"
+      url "https://github.com/brittonhayes/armactl/releases/download/v0.1.3/armactl_0.1.3_linux_amd64.tar.gz"
+      sha256 "f4bafad0d87561e59321a8934762006259b145c7cb17ecbe6b03ee63864a6e9b"
 
       def install
         bin.install "armactl"
