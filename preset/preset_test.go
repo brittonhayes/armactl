@@ -31,7 +31,7 @@ func Test_Parse(t *testing.T) {
 	}
 
 	b := bytes.NewBufferString(PRESET_HTML)
-	got, err := parse(b)
+	got, err := New().Parse(b)
 	if err != nil {
 		t.Error(err)
 	}

@@ -1,3 +1,4 @@
+// Package mods provides utilities for working with Arma 3 mods.
 package mods
 
 import (

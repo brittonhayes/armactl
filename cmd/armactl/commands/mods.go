@@ -3,9 +3,10 @@ package commands
 import (
 	"errors"
 	"fmt"
+	"os"
 
-	"github.com/brittonhayes/armactl/internal/mods"
-	"github.com/brittonhayes/armactl/internal/preset"
+	"github.com/brittonhayes/armactl/mods"
+	"github.com/brittonhayes/armactl/preset"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -79,12 +80,17 @@ func (c *ListModsCmd) listFromDirectory(ctx *Context) ([]string, error) {
 
 	ctx.Log.Info().Str("directory", c.Directory).Msg("found mods from directory")
 	ctx.Log.Debug().Str("directory", c.Directory).Strs("mods", m).Send()
-
 	return m, nil
 }
 
 func (c *ListModsCmd) listFromPreset(ctx *Context) ([]string, error) {
-	p, err := preset.FromFile(c.Preset)
+	f, err := os.Open(c.Preset)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+
+	p, err := preset.New().Parse(f)
 	if err != nil {
 		return nil, err
 	}
