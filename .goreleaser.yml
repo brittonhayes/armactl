@@ -1,9 +1,11 @@
 before:
   hooks:
-    # You may remove this if you don't use go modules.
-    - go mod download
+    - go mod tidy
 builds:
-  - goos:
+  - id: "armactl"
+    main: "./cmd/armactl"
+    binary: "armactl"
+    goos:
       - linux
       - windows
       - darwin
@@ -12,50 +14,50 @@ builds:
       - -X main.commit={{.Commit}}
       - -X main.date={{.Date}}
       - -X main.builtBy=goreleaser
-    main: "./cmd/armactl"
+
+brews:
+  - name: armactl
+    goarm: "6"
+    homepage: "https://github.com/brittonhayes/armactl"
+    description: "CLI for managing ARMA3 dedicated servers."
+    license: "MIT"
+    url_template: "https://github.com/brittonhayes/armactl/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+    tap:
+      owner: brittonhayes
+      name: armactl
+    commit_author:
+      name: goreleaserbot
+      email: bot@goreleaser.com
+
+
+scoop:
+    url_template: "https://github.com/brittonhayes/armactl/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+    bucket:
+      owner: brittonhayes
+      name: armactl
+    commit_author:
+      name: goreleaserbot
+      email: bot@goreleaser.com
+
 checksum:
   name_template: "checksums.txt"
 snapshot:
-  name_template: "{{ .Tag }}-next"
+  name_template: "{{ incpatch .Version }}-next"
 changelog:
   sort: asc
+  groups:
+    - title: Features
+      regexp: "^.*feat[(\\w)]*:+.*$"
+      order: 0
+    - title: 'Bug fixes'
+      regexp: "^.*fix[(\\w)]*:+.*$"
+      order: 1
+    - title: Others
+      order: 999
+
   filters:
     exclude:
       - "^docs:"
       - "^test:"
       - "^images:"
       - "^_examples:"
-
-brews:
-  - # Name template of the recipe
-    # Default to project name
-    name: armactl
-
-    # GOARM to specify which 32-bit arm version to use if there are multiple versions
-    # from the build section. Brew formulas support atm only one 32-bit version.
-    # Default is 6 for all artifacts or each id if there a multiple versions.
-    goarm: "6"
-
-    # GitHub/GitLab repository to push the formula to
-    # Gitea is not supported yet, but the support coming
-    tap:
-      owner: brittonhayes
-      name: armactl
-
-    url_template: "https://github.com/brittonhayes/armactl/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
-
-    # Git author used to commit to the repository.
-    # Defaults are shown.
-    commit_author:
-      name: goreleaserbot
-      email: goreleaser@carlosbecker.com
-
-    # Your app's homepage.
-    # Default is empty.
-    homepage: "https://github.com/brittonhayes/armactl"
-
-    # Your app's description.
-    # Default is empty.
-    description: "CLI for managing ARMA3 dedicated servers."
-
-    license: "MIT"

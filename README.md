@@ -21,6 +21,13 @@ brew tap brittonhayes/armactl
 brew install armactl
 ```
 
+### Scoop (Windows)
+
+```powershell
+scoop bucket add armactl https://github.com/brittonhayes/armactl.git
+scoop install armactl
+```
+
 ### Docker Image
 
 ```
