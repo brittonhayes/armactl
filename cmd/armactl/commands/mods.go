@@ -44,6 +44,10 @@ func (c *ListModsCmd) Run(ctx *Context) error {
 		}
 
 		installedMods = m
+		fmt.Fprintln(ctx.Output, "\nInstalled Mods:")
+		for i, mod := range m {
+			fmt.Fprintf(ctx.Output, "%d. @%s\n", i+1, mod)
+		}
 	}
 
 	if c.Preset != "" {
@@ -52,6 +56,10 @@ func (c *ListModsCmd) Run(ctx *Context) error {
 			return err
 		}
 		presetMods = p
+		fmt.Fprintln(ctx.Output, "\nPreset Mods:")
+		for i, mod := range p {
+			fmt.Fprintf(ctx.Output, "%d. @%s\n", i+1, mod)
+		}
 	}
 
 	if c.Check {
@@ -78,7 +86,6 @@ func (c *ListModsCmd) listFromDirectory(ctx *Context) ([]string, error) {
 		return nil, ErrNoModsFound
 	}
 
-	ctx.Log.Info().Str("directory", c.Directory).Msg("found mods from directory")
 	ctx.Log.Debug().Str("directory", c.Directory).Strs("mods", m).Send()
 	return m, nil
 }
@@ -99,7 +106,6 @@ func (c *ListModsCmd) listFromPreset(ctx *Context) ([]string, error) {
 		return nil, ErrNoModsFound
 	}
 
-	ctx.Log.Info().Str("preset", c.Preset).Msg("found mods from preset")
 	ctx.Log.Debug().Str("preset", c.Preset).Strs("mods", p.Mods).Send()
 
 	return p.Mods, nil

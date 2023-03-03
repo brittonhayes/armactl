@@ -39,6 +39,7 @@ func main() {
 		Ctx:     context.Background(),
 		Log:     logger,
 		Version: version,
+		Output:  os.Stdout,
 	})
 
 	ctx.FatalIfErrorf(err)
