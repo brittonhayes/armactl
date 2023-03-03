@@ -69,3 +69,8 @@ armactl mods sync --from '/path/to/source/@CBA_A3' --to '/path/to/destination/@C
 # Sync multiple comma-separated mods from one directory to another
 armactl mods sync --from '/path/to/@CBA_A3,/path/to/@ace' --to '/path/to/destination/@CBA_A3,/path/to/destination/@ace'
 ```
+
+## Acknowledgements
+
+- Mod syncing is performed using the packages from the amazing [rclone](https://github.com/rclone/rclone) tool.
+- Steam API querying is built ontop of the [go-a2s](github.com/rumblefrog/go-a2s) library.

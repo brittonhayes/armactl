@@ -9,6 +9,7 @@ require (
 	github.com/maruel/natural v1.1.0
 	github.com/rclone/rclone v1.61.1
 	github.com/rs/zerolog v1.29.0
+	github.com/rumblefrog/go-a2s v1.0.2
 	github.com/stretchr/testify v1.8.1
 )
 
