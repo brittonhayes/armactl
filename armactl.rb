@@ -5,21 +5,21 @@
 class Armactl < Formula
   desc "CLI for managing ARMA3 dedicated servers."
   homepage "https://github.com/brittonhayes/armactl"
-  version "0.1.7"
+  version "0.1.8"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/brittonhayes/armactl/releases/download/v0.1.7/armactl_0.1.7_darwin_amd64.tar.gz"
-      sha256 "a022be6dc7b02d388e6d9df96b1f7fd5c22e9d420f3d0695f2b305e19e8eeec0"
+      url "https://github.com/brittonhayes/armactl/releases/download/v0.1.8/armactl_0.1.8_darwin_amd64.tar.gz"
+      sha256 "3c44491ca86a285d7f6e8dc26956722a6985a06a53269e03acb3c452d58ee53d"
 
       def install
         bin.install "armactl"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/brittonhayes/armactl/releases/download/v0.1.7/armactl_0.1.7_darwin_arm64.tar.gz"
-      sha256 "7fb49231d3ff8d11f2a1a283ec19dd4aa98713aeadc788691aea98b6152da3a4"
+      url "https://github.com/brittonhayes/armactl/releases/download/v0.1.8/armactl_0.1.8_darwin_arm64.tar.gz"
+      sha256 "8621b6fc528645c7cebeeadfba4896b9f528915dc1ad80d730e091bfdc14c75e"
 
       def install
         bin.install "armactl"
@@ -28,17 +28,17 @@ class Armactl < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/brittonhayes/armactl/releases/download/v0.1.7/armactl_0.1.7_linux_arm64.tar.gz"
-      sha256 "39f56923ddb85746739aed12d118caea91ee0cc300ed4e97cd0d868b36fc0ef8"
+    if Hardware::CPU.intel?
+      url "https://github.com/brittonhayes/armactl/releases/download/v0.1.8/armactl_0.1.8_linux_amd64.tar.gz"
+      sha256 "fb834fdffe1e8a7577c89f4b5d26634574df40156c8c69f2911f6f1b20200e94"
 
       def install
         bin.install "armactl"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/brittonhayes/armactl/releases/download/v0.1.7/armactl_0.1.7_linux_amd64.tar.gz"
-      sha256 "2bb69bb03bb7500fa5c736003e3538e3bc16d765fed0a3a937edee6fa5a5468d"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/brittonhayes/armactl/releases/download/v0.1.8/armactl_0.1.8_linux_arm64.tar.gz"
+      sha256 "383c565e90859f915c127e5200d78c702226df0486817ab81bc58e05cc6a42c3"
 
       def install
         bin.install "armactl"
