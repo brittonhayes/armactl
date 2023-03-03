@@ -4,7 +4,7 @@
 ![Latest Release](https://img.shields.io/github/v/release/brittonhayes/armactl?label=latest%20release)
 [![Go Report Card](https://goreportcard.com/badge/github.com/brittonhayes/armactl)](https://goreportcard.com/report/github.com/brittonhayes/armactl)
 
-`armactl` is a cross-platform CLI tool for managing ARMA 3 servers. Supports Windows, Linux, and MacOS.
+`armactl` is a cross-platform CLI tool for managing ARMA 3 servers. Supports Windows, Linux, and OSX.
 
 ## Installation
 
