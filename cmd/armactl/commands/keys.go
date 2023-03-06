@@ -34,13 +34,13 @@ func (c *KeysListCmd) Run(ctx *Context) error {
 }
 
 type KeysCopyCmd struct {
-	Source      string `help:"Source to copy keys from." type:"existingDir" short:"s" required:"true"`
-	Destination string `help:"Destination to copy keys to." type:"existingDir" short:"d" required:"true"`
+	From string `help:"Directory to recursively find and copy *.bikey files." type:"existingDir" short:"s" required:"true"`
+	To   string `help:"Directory to copy keys to." type:"existingDir" short:"d" required:"true"`
 }
 
 func (c *KeysCopyCmd) Run(ctx *Context) error {
-	k := mods.NewBikey()
-	keys, err := k.Find(ctx.Ctx, c.Source)
+	bikey := mods.NewBikey()
+	keys, err := bikey.Find(ctx.Ctx, c.From)
 	if err != nil {
 		return err
 	}
@@ -49,5 +49,5 @@ func (c *KeysCopyCmd) Run(ctx *Context) error {
 		return ErrNoKeysFound
 	}
 
-	return k.Copy(ctx.Ctx, keys, c.Destination)
+	return bikey.Copy(ctx.Ctx, keys, c.To)
 }
