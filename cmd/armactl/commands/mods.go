@@ -11,12 +11,14 @@ import (
 )
 
 var (
+	ErrNoKeysFound        = errors.New("no *.bikeys found in directory")
 	ErrNoModsFound        = errors.New("no mods found in preset")
 	ErrModMismatch        = errors.New("mods in preset do not match mods in directory")
 	ErrMissingCompareArgs = errors.New("directory and preset must be provided to compare")
 )
 
 type ModsCmd struct {
+	Keys KeysCmd     `cmd:"" help:"List keys in a directory." aliases:"k"`
 	List ListModsCmd `cmd:"" help:"List mods in directory or HTML mod preset." aliases:"ls"`
 	Sync SyncModsCmd `cmd:"" help:"Sync mods from a source directory to a destination." aliases:"s"`
 }

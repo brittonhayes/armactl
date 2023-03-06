@@ -10,23 +10,26 @@ import (
 )
 
 var (
-	version = "vX.X.X"
+	Version = "vX.X.X"
 )
 
 var cli struct {
-	Verbose bool                `help:"Enable verbose logging." default:"false" short:"v"`
-	Server  commands.ServerCmd  `cmd:"" help:"Query a server for information."`
-	Mods    commands.ModsCmd    `cmd:"" help:"Parse an ARMA mods preset."`
-	Version commands.VersionCmd `cmd:"" help:"Print the version of armactl." aliases:"v"`
+	Verbose bool `help:"Enable verbose logging." default:"false" short:"v"`
+
+	Version commands.VersionCmd `cmd:"" help:"Print version of armactl." aliases:"v"`
+	Steam   commands.SteamCmd   `cmd:"" help:"Query ARMA Steam server for information."`
+	Keys    commands.KeysCmd    `cmd:"" help:"Manage bikeys for ARMA modifications."`
+	Mods    commands.ModsCmd    `cmd:"" help:"Manage ARMA modifications and presets."`
+	Server  commands.ServerCmd  `cmd:"" help:"Run ARMA3 dedicated server."`
 }
 
 func main() {
 	ctx := kong.Parse(&cli,
 		kong.Name("armactl"),
-		kong.Description("CLI for managing ARMA3 dedicated servers."),
+		kong.Description("ARMACTL is a command line tool to simplify the management of ARMA 3 dedicated servers."),
 		kong.UsageOnError(),
 		kong.ConfigureHelp(kong.HelpOptions{
-			Compact: true,
+			NoExpandSubcommands: true,
 		}),
 	)
 
@@ -38,7 +41,7 @@ func main() {
 	err := ctx.Run(&commands.Context{
 		Ctx:     context.Background(),
 		Log:     logger,
-		Version: version,
+		Version: Version,
 		Output:  os.Stdout,
 	})
 

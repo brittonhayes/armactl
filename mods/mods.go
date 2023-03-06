@@ -11,23 +11,14 @@ import (
 	"github.com/maruel/natural"
 )
 
-type mod struct{}
-
-type Mod interface {
-	Meta(file string) (*string, error)
-}
-
-func NewMod() Mod {
-	return &mod{}
-}
-
 func parseNameFromMeta(s string) string {
 	p := regexp.MustCompile(`"([^"]*)"`)
 	s = p.FindString(s)
 	return strings.ReplaceAll(s, "\"", "")
 }
 
-func (m *mod) Meta(file string) (*string, error) {
+// Meta returns the name of the mod from the meta.cpp file
+func Meta(file string) (*string, error) {
 	b, err := os.ReadFile(file)
 	if err != nil {
 		return nil, err
@@ -38,6 +29,7 @@ func (m *mod) Meta(file string) (*string, error) {
 	return &match, nil
 }
 
+// FromDirectory returns a list of mods from a directory
 func FromDirectory(path string) ([]string, error) {
 	files, err := os.ReadDir(path)
 	if err != nil {
@@ -60,7 +52,7 @@ func FromDirectory(path string) ([]string, error) {
 			continue
 		}
 
-		modName, err := NewMod().Meta(file)
+		modName, err := Meta(file)
 		if err != nil {
 			return nil, err
 		}
