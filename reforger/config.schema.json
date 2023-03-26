@@ -1,0 +1,140 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "dedicatedServerId": {
+        "type": "string"
+      },
+      "region": {
+        "title": "ISO 3166-1 Alpha-2 Country code",
+        "description": "A valid 2-digit ISO country code (ISO 3166-1 alpha-2), or, an array of valid ISO codes.",
+        "type": "string", "pattern": "^([A-Z]{2})$|^([A-Z]{2})-([A-Z0-9]{2,3})$"
+        
+      },
+      "gameHostBindAddress": {
+        "type": "string",
+        "format": "ipv4"
+      },
+      "gameHostBindPort": {
+        "type": "integer"
+      },
+      "gameHostRegisterBindAddress": {
+        "type": "string",
+        "format": "ipv4"
+      },
+      "gameHostRegisterPort": {
+        "type": "integer"
+      },
+      "adminPassword": {
+        "type": "string"
+      },
+      "game": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "scenarioId": {
+            "type": "string"
+          },
+          "playerCountLimit": {
+            "type": "integer"
+          },
+          "autoJoinable": {
+            "type": "boolean"
+          },
+          "visible": {
+            "type": "boolean"
+          },
+          "gameProperties": {
+            "type": "object",
+            "properties": {
+              "serverMaxViewDistance": {
+                "type": "integer"
+              },
+              "serverMinGrassDistance": {
+                "type": "integer"
+              },
+              "networkViewDistance": {
+                "type": "integer"
+              },
+              "disableThirdPerson": {
+                "type": "boolean"
+              },
+              "fastValidation": {
+                "type": "boolean"
+              },
+              "battlEye": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "serverMaxViewDistance",
+              "serverMinGrassDistance",
+              "networkViewDistance",
+              "disableThirdPerson",
+              "fastValidation",
+              "battlEye"
+            ]
+          },
+          "mods": {
+            "type": "array",
+            "items": [
+              {
+                "type": "object",
+                "properties": {
+                  "modId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "modId",
+                  "name",
+                  "version"
+                ]
+              }
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "password",
+          "scenarioId",
+          "playerCountLimit",
+          "autoJoinable",
+          "visible",
+          "gameProperties",
+          "mods"
+        ]
+      },
+      "a2sQueryEnabled": {
+        "type": "boolean"
+      },
+      "steamQueryPort": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "dedicatedServerId",
+      "region",
+      "gameHostBindAddress",
+      "gameHostBindPort",
+      "gameHostRegisterBindAddress",
+      "gameHostRegisterPort",
+      "adminPassword",
+      "game",
+      "a2sQueryEnabled",
+      "steamQueryPort"
+    ]
+  }
+  
+  

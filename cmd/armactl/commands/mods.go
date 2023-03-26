@@ -12,7 +12,7 @@ import (
 
 var (
 	ErrNoKeysFound        = errors.New("no *.bikeys found in directory")
-	ErrNoModsFound        = errors.New("no mods found in preset")
+	ErrNoModsFound        = errors.New("no mods found")
 	ErrModMismatch        = errors.New("mods in preset do not match mods in directory")
 	ErrMissingCompareArgs = errors.New("directory and preset must be provided to compare")
 )
