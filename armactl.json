@@ -1,19 +1,19 @@
 {
-    "version": "0.2.0",
+    "version": "0.3.0",
     "architecture": {
         "32bit": {
-            "url": "https://github.com/brittonhayes/armactl/releases/download/v0.2.0/armactl_0.2.0_windows_386.tar.gz",
+            "url": "https://github.com/brittonhayes/armactl/releases/download/v0.3.0/armactl_0.3.0_windows_386.tar.gz",
             "bin": [
                 "armactl.exe"
             ],
-            "hash": "47d4d1695b2bb3501ca91b123d16b84ff5d472263b711c45729767dbf77f6af5"
+            "hash": "508eff92b5c6ca4d01eda7d2e5079e62a562a7e0677b25a0d196174d2f0e97ce"
         },
         "64bit": {
-            "url": "https://github.com/brittonhayes/armactl/releases/download/v0.2.0/armactl_0.2.0_windows_amd64.tar.gz",
+            "url": "https://github.com/brittonhayes/armactl/releases/download/v0.3.0/armactl_0.3.0_windows_amd64.tar.gz",
             "bin": [
                 "armactl.exe"
             ],
-            "hash": "0b82658c21d42e55bad39b55af356a7f7f0189bdf7a29258d17025efbf2a1843"
+            "hash": "c222ada1a1832898b6e48910159b83947e1cd1047a3e7c998defe4acde67f5c4"
         }
     }
 }
