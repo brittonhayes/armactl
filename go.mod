@@ -10,6 +10,7 @@ require (
 	github.com/rclone/rclone v1.61.1
 	github.com/rs/zerolog v1.29.0
 	github.com/rumblefrog/go-a2s v1.0.2
+	github.com/santhosh-tekuri/jsonschema/v5 v5.2.0
 	github.com/stretchr/testify v1.8.1
 )
 
@@ -40,8 +41,6 @@ require (
 	github.com/prometheus/common v0.37.0 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/rfjakob/eme v1.1.2 // indirect
-	github.com/santhosh-tekuri/jsonschema v1.2.4 // indirect
-	github.com/santhosh-tekuri/jsonschema/v5 v5.2.0 // indirect
 	github.com/shirou/gopsutil/v3 v3.22.10 // indirect
 	github.com/sirupsen/logrus v1.9.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
