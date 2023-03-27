@@ -16,11 +16,12 @@ var (
 var cli struct {
 	Verbose bool `help:"Enable verbose logging." default:"false" short:"v"`
 
-	Version commands.VersionCmd `cmd:"" help:"Print version of armactl." aliases:"v"`
-	Steam   commands.SteamCmd   `cmd:"" help:"Query ARMA Steam server for information."`
-	Keys    commands.KeysCmd    `cmd:"" help:"Manage bikeys for ARMA modifications."`
-	Mods    commands.ModsCmd    `cmd:"" help:"Manage ARMA modifications and presets."`
-	Server  commands.ServerCmd  `cmd:"" help:"Run ARMA3 dedicated server."`
+	Version  commands.VersionCmd  `cmd:"" help:"Print version of armactl." aliases:"v"`
+	Steam    commands.SteamCmd    `cmd:"" help:"Query ARMA Steam server for information."`
+	Keys     commands.KeysCmd     `cmd:"" help:"Manage bikeys for ARMA modifications."`
+	Mods     commands.ModsCmd     `cmd:"" help:"Manage ARMA modifications and presets."`
+	Server   commands.ServerCmd   `cmd:"" help:"Run ARMA3 dedicated server."`
+	Reforger commands.ReforgerCmd `cmd:"" help:"Manage ARMA Reforger dedicated server."`
 }
 
 func main() {
