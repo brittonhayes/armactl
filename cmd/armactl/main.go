@@ -22,6 +22,7 @@ var cli struct {
 	Mods     commands.ModsCmd     `cmd:"" help:"Manage ARMA modifications and presets."`
 	Server   commands.ServerCmd   `cmd:"" help:"Run ARMA3 dedicated server."`
 	Reforger commands.ReforgerCmd `cmd:"" help:"Manage ARMA Reforger dedicated server."`
+	UI       commands.UICmd       `cmd:"" help:"Start the web interface for armactl."`
 }
 
 func main() {

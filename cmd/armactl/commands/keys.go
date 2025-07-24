@@ -3,7 +3,7 @@ package commands
 import (
 	"fmt"
 
-	"github.com/brittonhayes/armactl/mods"
+	"github.com/brittonhayes/armactl/internal/mods"
 )
 
 type KeysCmd struct {

@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package armactl.api;
+
+option go_package = "github.com/brittonhayes/armactl/web/api/types";
+
+// Generic API response wrapper
+message ApiResponse {
+  oneof result {
+    string error = 1;
+    bytes data = 2; // JSON-encoded response data
+  }
+  string message = 3;
+}
+
+// Error response for API failures
+message ErrorResponse {
+  string error = 1;
+  int32 code = 2;
+  string message = 3;
+}

@@ -1,10 +1,11 @@
 module github.com/brittonhayes/armactl
 
-go 1.18
+go 1.20
 
 require (
 	github.com/PuerkitoBio/goquery v1.8.1
 	github.com/alecthomas/kong v0.7.1
+	github.com/go-chi/chi/v5 v5.0.7
 	github.com/google/go-cmp v0.5.9
 	github.com/maruel/natural v1.1.0
 	github.com/rclone/rclone v1.61.1
@@ -24,7 +25,6 @@ require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/go-chi/chi/v5 v5.0.7 // indirect
 	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/jzelinskie/whirlpool v0.0.0-20201016144138-0675e54bb004 // indirect

@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/brittonhayes/armactl/reforger"
+	"github.com/brittonhayes/armactl/internal/reforger"
 )
 
 type ReforgerCmd struct {

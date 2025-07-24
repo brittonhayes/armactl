@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/brittonhayes/armactl/mods"
-	"github.com/brittonhayes/armactl/preset"
+	"github.com/brittonhayes/armactl/internal/mods"
+	"github.com/brittonhayes/armactl/internal/preset"
 	"github.com/google/go-cmp/cmp"
 )
 

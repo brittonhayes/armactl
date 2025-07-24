@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"github.com/brittonhayes/armactl/steam"
+	"github.com/brittonhayes/armactl/internal/steam"
 )
 
 type SteamCmd struct {

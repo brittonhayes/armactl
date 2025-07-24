@@ -46,9 +46,15 @@ tasks:
   build:
     desc: run go build
     cmds:
+      - task: proto:gen
+      - task: ui:build
       - go build -v -o bin/armactl cmd/armactl/main.go
     sources:
       - ./**/*.go
+      - api/proto/**/*.proto
+      - web/ui/src/**/*
+      - web/ui/index.html
+      - web/ui/package.json
     generates:
       - bin/armactl
     method: checksum
@@ -81,3 +87,60 @@ tasks:
     cmds:
       - task: mod
       - task: build
+
+  ui:dev:
+    desc: start React dev server
+    dir: web/ui
+    cmds:
+      - pnpm run dev
+
+  ui:build:
+    desc: build React UI for production
+    dir: web/ui
+    cmds:
+      - pnpm run build
+    sources:
+      - src/**/*
+      - index.html
+      - package.json
+      - vite.config.ts
+    generates:
+      - dist/**/*
+
+  build:ui:
+    desc: alias for ui:build
+    cmds:
+      - task: ui:build
+
+  # Protocol Buffer tasks
+  proto:gen:
+    desc: generate Go and TypeScript types from proto files
+    cmds:
+      - task: proto:go
+      - task: proto:ts
+    sources:
+      - api/proto/**/*.proto
+    generates:
+      - web/api/types/*.pb.go
+      - web/ui/src/types/proto/*.ts
+
+  proto:go:
+    desc: generate Go types from proto files
+    cmds:
+      - mkdir -p web/api/types
+      - protoc --go_out=web/api/types --go_opt=paths=source_relative --proto_path=api/proto api/proto/*.proto
+    sources:
+      - api/proto/**/*.proto
+    generates:
+      - web/api/types/*.pb.go
+
+  proto:ts:
+    desc: generate TypeScript types from proto files using ts-proto
+    dir: web/ui
+    cmds:
+      - mkdir -p src/types/proto
+      - protoc --plugin=protoc-gen-ts_proto=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=src/types/proto --ts_proto_opt=onlyTypes=true,stringEnums=true,useOptionals=messages --proto_path=../../api/proto ../../api/proto/*.proto
+    sources:
+      - ../../api/proto/**/*.proto
+    generates:
+      - src/types/proto/*.ts

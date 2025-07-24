@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package armactl.api;
+
+option go_package = "github.com/brittonhayes/armactl/web/api/types";
+
+// Result of validating mods against a preset
+message ValidationResult {
+  bool valid = 1;
+  repeated string missing = 2;
+  repeated string extra = 3;
+  optional string error_message = 4;
+}
+
+// Request to list installed and preset mods
+message ModsListRequest {
+  optional string directory = 1;
+  optional string preset = 2;
+}
+
+// Response containing mod lists
+message ModsListResponse {
+  repeated string installed_mods = 1;
+  repeated string preset_mods = 2;
+}
+
+// Request to sync mods between directories
+message ModsSyncRequest {
+  repeated string from = 1;
+  repeated string to = 2;
+}

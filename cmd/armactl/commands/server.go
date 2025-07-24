@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"github.com/brittonhayes/armactl/server"
+	"github.com/brittonhayes/armactl/internal/server"
 )
 
 type ServerOptions struct {

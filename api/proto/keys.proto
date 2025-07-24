@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package armactl.api;
+
+option go_package = "github.com/brittonhayes/armactl/web/api/types";
+
+// Response containing list of available keys
+message KeysListResponse {
+  repeated string keys = 1;
+}
