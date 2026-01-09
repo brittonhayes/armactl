@@ -1,17 +1,15 @@
 {
-    "dedicatedServerId": "",
-    "region": "US",
-    "gameHostBindAddress": "0.0.0.0",
-    "gameHostBindPort": 32001,
-    "gameHostRegisterBindAddress": "73.111.111.11",
-    "gameHostRegisterPort": 32001,
-    "adminPassword": "adminpassword",
+    "bindPort": 32001,
+    "publicPort": 32001,
+    "a2s": {
+        "port": 17777
+    },
     "game": {
         "name": "Server Name",
         "password": "password",
+        "passwordAdmin": "adminpassword",
         "scenarioId": "{59AD59368755F41A}Missions/21_GM_Eden.conf",
-        "playerCountLimit": 10,
-        "autoJoinable": false,
+        "maxPlayers": 10,
         "visible": true,
         "gameProperties": {
             "serverMaxViewDistance": 1600,
@@ -22,13 +20,11 @@
             "battlEye": true
         },
         "mods": [
-            { 
+            {
                 "modId": "5994AD5A9F33BE57",
                 "name": "Game Master FX",
-                "version": "1.0.51" 
+                "version": "1.0.51"
             }
         ]
-    },
-    "a2sQueryEnabled": true,
-    "steamQueryPort": 17777
+    }
 }
